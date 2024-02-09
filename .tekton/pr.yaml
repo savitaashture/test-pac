@@ -9,7 +9,7 @@ metadata:
     pipelinesascode.tekton.dev/on-target-branch: "[main]"
     pipelinesascode.tekton.dev/pipeline: "[buildpacks]"
     # pipelinesascode.tekton.dev/on-target-branch: "[refs/heads/*]" 
-    pipelinesascode.tekton.dev/task: "git-clone"
+    pipelinesascode.tekton.dev/task: "[git-clone, buildpacks, buildpacks-phases]"
     # How many runs we want to keep.
     # pipelinesascode.tekton.dev/max-keep-runs: "2"
     # pipelinesascode.tekton.dev/on-cel-expression: | event == "push" && target_branch == "[refs/heads/*]" && "staging/*".pathChanged()
