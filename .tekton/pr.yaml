@@ -38,6 +38,7 @@ spec:
                 #! /bin/bash
                 echo $(params.revision)
                 echo $(params.repo_url)
+                echo "print source url"
                 echo $(params.source_url)
                 echo "************"
                 sleep 20
