@@ -43,7 +43,7 @@ spec:
                 echo $(params.repo_url)
                 echo "print source url"
                 echo $(params.source_url)
-                echo "printing source_branch"
+                echo "printing source_branch br"
                 echo $(params.br)
                 echo "************"
                 sleep 20
