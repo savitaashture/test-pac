@@ -24,7 +24,7 @@ spec:
     - name: repo_url
       value: "{{ repo_url }}"
     - name: revision
-      value: "{{ revision }}"    
+      value: "{{ revision }}"
   pipelineSpec:
     params:
       - name: repo_url
@@ -35,10 +35,4 @@ spec:
           steps:
             - name: noop-task
               image: ubuntu
-              script: |
-                #! /bin/bash
-                echo $(params.revision)
-                echo $(params.repo_url)
-                echo "************"
-                sleep 20
-                exit 0
+              command: ["/bin/echo", "{{ trigger_comment }}"]
