@@ -24,11 +24,14 @@ spec:
     - name: repo_url
       value: "{{ repo_url }}"
     - name: revision
-      value: "{{ revision }}"    
+      value: "{{ revision }}"
+    - name: trigger_comment
+      value: "{{ trigger_comment }}"
   pipelineSpec:
     params:
       - name: repo_url
       - name: revision
+      - name: trigger_comment
     tasks:
       - name: noop-task
         taskSpec:
@@ -40,5 +43,6 @@ spec:
                 echo $(params.revision)
                 echo $(params.repo_url)
                 echo "************"
+                echo $(( trigger_comment ))
                 sleep 20
                 exit 0
