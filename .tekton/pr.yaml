@@ -5,7 +5,7 @@ metadata:
   name: path-change-test
   annotations:
     pipelinesascode.tekton.dev/on-event: "[pull_request, push]"
-    pipelinesascode.tekton.dev/on-target-branch: "[main]"
+    pipelinesascode.tekton.dev/on-target-branch: "[main1]"
     #pipelinesascode.tekton.dev/on-cel-expression: |
       #event == "push" && ("components/?*/base/**".pathChanged())
 spec:
