@@ -8,7 +8,7 @@ metadata:
     # pipelinesascode.tekton.dev/on-event: "[incoming]"
     pipelinesascode.tekton.dev/on-target-branch: "[main]"
     #pipelinesascode.tekton.dev/on-comment: "savita"
-    pipelinesascode.tekton.dev/on-comment: "^/hello-world"
+    pipelinesascode.tekton.dev/on-comment: "hello-world"
     #pipelinesascode.tekton.dev/on-cel-expression: |
       #files.renamed.exists(x, x.matches('components/'))
     # pipelinesascode.tekton.dev/on-target-branch: "[refs/heads/*]" 
