@@ -3,7 +3,3 @@ Testing both glob path change and refs/heads/* branch  dd
 cx
 wddss
 x
-cs
-sd
-s
-tgy
