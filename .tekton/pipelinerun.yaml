@@ -48,7 +48,7 @@ spec:
                 echo {{ pull_request_number }}
                 echo {{ repo_url }}
                 echo {{ revision }}
-                a = {{ trigger_comment }}
+                a={{ trigger_comment }}
                 value=$(echo "$a" | awk '{print $2}')
                 # value=$(echo "$a" | awk -F'[/ ]' '{print $2}')
                 git clone {{ repo_url }}
