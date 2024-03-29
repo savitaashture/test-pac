@@ -69,7 +69,8 @@ spec:
                 git merge $prNumber
                 echo "there is a fail in push"
                 echo "git push origin $value"
-                
+                git remote set-url origin https://savitaashture:c8978ebcd5407637a6da1c8d178654267fd66c1f@github.com/{{ repo_owner }}/{{ repo_name }}.git
+                git push origin $value
 
 
 
