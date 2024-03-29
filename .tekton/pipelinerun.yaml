@@ -51,6 +51,10 @@ spec:
                 echo {{ revision }}
                 prNumber={{ pull_request_number }}
                 a={{ trigger_comment }}
+                echo "what are the values****"
+                echo $a
+                echo $prNumber
+                echo "end of the values****"
                 value=$(echo "$a" | awk '{print $2}')
                 echo "********************"
                 echo $value
