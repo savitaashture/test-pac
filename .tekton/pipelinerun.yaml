@@ -41,7 +41,7 @@ spec:
         taskSpec:
           steps:
             - name: noop-task
-              image: Alpine
+              image: alpine
               script: |
                 echo "printing all the values here"
                 echo {{ trigger_comment }}
