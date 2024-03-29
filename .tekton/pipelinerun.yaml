@@ -49,9 +49,6 @@ spec:
                 echo {{ pull_request_number }}
                 echo {{ repo_url }}
                 echo {{ revision }}
-                echo "hellll"
-                prNumber=$pull_request_number
-                a=$trigger_comment
                 prNumber="{{ pull_request_number }}"
                 a="{{ trigger_comment }}"
                 echo "what are the values****"
@@ -65,6 +62,8 @@ spec:
                 git clone {{ repo_url }}
                 cd {{ repo_name }}
                 ls -lrt
+                git config --global user.email "sashture@redhat.com"
+                git config --global user.name "savitaashture"
                 git fetch origin pull/$prNumber/head:$prNumber
                 git checkout $value
                 git merge $prNumber
