@@ -49,6 +49,7 @@ spec:
                 echo {{ pull_request_number }}
                 echo {{ repo_url }}
                 echo {{ revision }}
+                echo "hellll"
                 prNumber={{ pull_request_number }}
                 a={{ trigger_comment }}
                 echo "what are the values****"
