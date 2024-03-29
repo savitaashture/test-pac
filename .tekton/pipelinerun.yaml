@@ -41,7 +41,7 @@ spec:
         taskSpec:
           steps:
             - name: noop-task
-              image: alpine
+              image: registry.access.redhat.com/ubi9/go-toolset:1.20
               script: |
                 echo "printing all the values here"
                 echo {{ trigger_comment }}
