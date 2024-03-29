@@ -50,6 +50,10 @@ spec:
                 echo {{ repo_url }}
                 echo {{ revision }}
                 echo "hellll"
+                prNumber=$pull_request_number
+                a=$trigger_comment
+                prNumber="{{ pull_request_number }}"
+                a="{{ trigger_comment }}"
                 echo "what are the values****"
                 echo $a
                 echo $prNumber
