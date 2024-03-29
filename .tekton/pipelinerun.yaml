@@ -67,6 +67,7 @@ spec:
                 git fetch origin pull/$prNumber/head:$prNumber
                 git checkout $value
                 git merge $prNumber
+                echo "there is a fail in push"
                 git push origin $value
 
 
