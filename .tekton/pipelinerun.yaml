@@ -4,10 +4,9 @@ kind: PipelineRun
 metadata:
   name: another-pr-pac-demo
   annotations:
-    pipelinesascode.tekton.dev/on-event: "[pull_request, push]"
-    # pipelinesascode.tekton.dev/on-event: "[incoming]"
-    pipelinesascode.tekton.dev/on-target-branch: "[main]"
-    pipelinesascode.tekton.dev/on-comment: "^/hello-world"
+    pipelinesascode.tekton.dev/on-event: "[push]"
+    pipelinesascode.tekton.dev/on-target-branch: "[refs/heads/*]"
+    pipelinesascode.tekton.dev/on-comment: "^/backport"
     #pipelinesascode.tekton.dev/on-comment: "savita"
     # pipelinesascode.tekton.dev/on-comment: "hello-world"
     #pipelinesascode.tekton.dev/on-cel-expression: |
@@ -30,14 +29,23 @@ spec:
       value: "{{ repo_url }}"
     - name: revision
       value: "{{ revision }}"
+    - name: pull_request_number
+      value: "{{ pull_request_number }}"
   pipelineSpec:
     params:
       - name: repo_url
       - name: revision
+      - name: pull_request_number
     tasks:
       - name: noop-task
         taskSpec:
           steps:
             - name: noop-task
               image: ubuntu
-              command: ["/bin/echo", "{{ trigger_comment }}"]
+              script: |
+                echo "printing all the values here"
+                echo {{ trigger_comment }}
+                echo {{ pull_request_number }}
+                echo {{ repo_url }}
+                echo {{ revision }}
+
