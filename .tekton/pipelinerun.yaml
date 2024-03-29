@@ -48,12 +48,17 @@ spec:
                 echo {{ pull_request_number }}
                 echo {{ repo_url }}
                 echo {{ revision }}
+                prNumber={{ pull_request_number }}
                 a={{ trigger_comment }}
                 value=$(echo "$a" | awk '{print $2}')
                 # value=$(echo "$a" | awk -F'[/ ]' '{print $2}')
                 git clone {{ repo_url }}
                 cd {{ repo_name }}
-                git fetch origin pull/{{ pull_request_number }}/head:{{ pull_request_number }}
+                ls -lrt
+                git fetch origin pull/$prNumber/head:$prNumber
                 git checkout $value
-                git merge {{ pull_request_number }}
+                git merge $prNumber
                 git push origin $value
+
+
+
