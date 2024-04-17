@@ -43,4 +43,4 @@ spec:
               script: |
                 #! /bin/bash
                 echo "{{ trigger_comment }}"
-                exit 0
+                exit 1
