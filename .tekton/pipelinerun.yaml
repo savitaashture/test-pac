@@ -41,6 +41,6 @@ spec:
             - name: noop-task
               image: ubuntu
               script: |
-              #! /bin/bash
-              echo "{{ trigger_comment }}"
-              exit 1
+                #! /bin/bash
+                echo "{{ trigger_comment }}"
+                exit 1
