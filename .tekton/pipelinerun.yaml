@@ -23,7 +23,7 @@ metadata:
        # event == "push" && target_branch == "main" && source_branch == "refs/heads/*"  && ("staging/?*/base/**".pathChanged() || "staging/*".pathChanged() || "*/staging/**".pathChanged())
        # ( target_branch == "refs/heads/*" && event == "push" && ("components/**".pathChanged()) )
     pipelinesascode.tekton.dev/on-cel-expression: |
-      ( event == "push" && source_branch == 'ma\'in' ) && "components/?*/base/**".pathChanged()
+      ( event == "push" && source_branch == "main" ) && "components/?*/base/**".pathChanged()
 spec:
   params:
     - name: repo_url
