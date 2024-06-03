@@ -3,7 +3,7 @@ apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   name: another-pr-pac-demo
-  annotations:
+annotations:
     pipelinesascode.tekton.dev/on-event: "[pull_request, push]"
     # pipelinesascode.tekton.dev/on-event: "[incoming]"
     pipelinesascode.tekton.dev/on-target-branch: "[main]"
