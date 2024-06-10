@@ -24,8 +24,8 @@ metadata:
        # ( target_branch == "refs/heads/*" && event == "push" && ("components/**".pathChanged()) )
     # pipedelinesascode.tekton.dev/on-cel-expression: |
       # event == "push" && ( target_branch == "main" ) && "components/?*/base/**".pathChanged()
-    # pipelinesascode.tekton.dev/on-cel-expression: |
-      # header.match("x-github-event", "push") && (body.ref.contains("refs/tags/")) || body.ref.contains("refs/heads/main"))
+    pipelinesascode.tekton.dev/on-cel-expression: |
+      header.match("x-github-event", "push") && (body.ref.contains("refs/tags/")) || body.ref.contains("refs/heads/main"))
 spec:
   params:
     - name: repo_url
