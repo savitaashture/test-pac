@@ -40,4 +40,4 @@ spec:
           steps:
             - name: noop-task
               image: ubuntu
-              command: ["/bin/echo", "{{ company }}"]
+              command: ["/bin/echo", "{{ custom }}"]
