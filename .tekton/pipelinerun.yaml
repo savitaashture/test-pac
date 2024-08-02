@@ -8,7 +8,7 @@ metadata:
     # pipelinesascode.tekton.dev/on-event: "[incoming]"
     pipelinesascode.tekton.dev/on-target-branch: "[main]"
     pipelinesascode.tekton.dev/on-cel-expression: |
-      body.label.name == "deploy-to-sbox" 
+      event == "issue_comment" && action == "created" && body.comment.body == "deploy-to-sbox"
     # pipelinesascode.tekton.dev/on-comment: "^/hello-world"
     #pipelinesascode.tekton.dev/on-comment: "savita"
     # pipelinesascode.tekton.dev/on-comment: "hello-world"
