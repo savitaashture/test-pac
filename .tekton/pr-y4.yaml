@@ -9,10 +9,6 @@ metadata:
     pipelinesascode.tekton.dev/task-1: "[yq:0.4]"
 spec:
   pipelineSpec:
-    params:
-      - name: new-image-sha
-        description: example of a value to use
-        default: ""
     workspaces:
       - name: source
     tasks:
