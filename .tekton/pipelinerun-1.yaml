@@ -1,12 +1,12 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  name: yq-pipeline-run-3
+  name: yq-pipeline-run-4
   annotations:
     pipelinesascode.tekton.dev/on-target-branch: "[main]"
     pipelinesascode.tekton.dev/on-event: "[pull_request, push]"
     pipelinesascode.tekton.dev/task: "git-clone"
-    pipelinesascode.tekton.dev/task-1: "[yq:0.3]"
+    pipelinesascode.tekton.dev/task-1: "[yq:0.4]"
 spec:
   pipelineSpec:
     params:
@@ -40,12 +40,12 @@ spec:
           - name: source
             workspace: source
         params:
-          - name: files
-            value:
-              - "./helm/values.yaml"
-              - "./helm/values-development.yaml"
-          - name: expression
-            value: .image="$(params.new-image-sha)"
+          - name: SCRIPT
+            value: |
+              for var in "./helm/values.yaml" "./helm/values-development.yaml"
+                do
+                    /usr/bin/yq eval -i '.image="012345my-new-image-sha"' "$var"
+                done
   workspaces:
     - name: source
       volumeClaimTemplate:
@@ -55,3 +55,8 @@ spec:
           resources:
             requests:
               storage: 100Mi
+  taskRunSpecs:
+    - pipelineTaskName: yq-replace
+      taskPodTemplate:
+        securityContext:
+          runAsUser: 0
