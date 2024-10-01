@@ -3,9 +3,8 @@ kind: PipelineRun
 metadata:
   name: yq-pipeline-run-4
   annotations:
-    pipelinesascode.tekton.dev/target-namespace: "\\ .TargetNamespace //"
-    pipelinesascode.tekton.dev/on-target-branch: "[\\ .TargetBranch //]"
-    pipelinesascode.tekton.dev/on-event: "[\\ .TargetEvent //]"
+    pipelinesascode.tekton.dev/on-target-branch: "main"
+    pipelinesascode.tekton.dev/on-event: "[pull_request, push]"
     pipelinesascode.tekton.dev/task: "git-clone"
     pipelinesascode.tekton.dev/task-1: "[yq:0.4]"
 spec:
