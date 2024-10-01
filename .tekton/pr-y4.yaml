@@ -9,6 +9,10 @@ metadata:
     pipelinesascode.tekton.dev/task-1: "[yq:0.4]"
 spec:
   pipelineSpec:
+    params:
+      - name: new-image-sha
+        description: example of a value to use
+        default: "123"  
     workspaces:
       - name: source
     tasks:
@@ -36,12 +40,12 @@ spec:
           - name: source
             workspace: source
         params:
-          - name: SCRIPT
-            value: |
-              for var in "./helm/values.yaml" "./helm/values-development.yaml"
-                do
-                    /usr/bin/yq eval -i '.image="012345my-new-image-sha"' "$var"
-                done
+          - name: files
+            value:
+              - "./helm/values.yaml"
+              - "./helm/values-development.yaml"
+          - name: expression
+            value: .image="$(params.new-image-sha)"
   workspaces:
     - name: source
       volumeClaimTemplate:
