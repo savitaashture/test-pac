@@ -12,7 +12,7 @@ spec:
     params:
       - name: new-image-sha
         description: example of a value to use
-        default: "123"
+        default: ""
     workspaces:
       - name: source
     tasks:
