@@ -31,7 +31,7 @@ spec:
       value: "{{ repo_url }}"
     - name: revision
       value: "{{ revision }}"
-  pipelineSpec:
+pipelineSpec:
     params:
       - name: repo_url
       - name: revision
