@@ -26,6 +26,7 @@ metadata:
       # event == "push" && ( target_branch == "main" ) && "components/?*/base/**".pathChanged()
     
 spec:
+  managedBy: kueue.x-k8s.io/multikueue
   params:
     - name: repo_url
       value: "{{ repo_url }}"
