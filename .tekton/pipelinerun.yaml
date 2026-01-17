@@ -41,5 +41,7 @@ spec:
         taskSpec:
           steps:
             - name: noop-task
-              image: ubuntu
-              command: ["/bin/echo", "{{ trigger_comment }}", "{{ event_type }}"]
+              image: registry.access.redhat.com/ubi9/ubi-micro
+              script: |
+                echo "hello from clustertask"
+                echo "{{ body.comment.body }}"
