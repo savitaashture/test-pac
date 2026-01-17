@@ -42,4 +42,4 @@ spec:
           steps:
             - name: noop-task
               image: ubuntu
-              command: ["/bin/echo", "{{ trigger_comment }}", "{{ event_type }}"]
+              command: ["/bin/echo", "{{ trigger_comment }}", "{{ event_type }}", "hiii"]
