@@ -1,0 +1,43 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: next
+  annotations:
+    pipelinesascode.tekton.dev/on-event: "[pull_request, push]"
+    # pipelinesascode.tekton.dev/on-event: "[incoming]"
+    pipelinesascode.tekton.dev/on-target-branch: "[main]"
+    ## pipelinesascode.tekton.dev/on-comment: "^/hello-world"
+    #pipelinesascode.tekton.dev/on-comment: "savita"
+    # pipelinesascode.tekton.dev/on-comment: "hello-world"
+    #pipelinesascode.tekton.dev/on-cel-expression: |
+      #files.renamed.exists(x, x.matches('components/'))
+    # pipelinesascode.tekton.dev/on-target-branch: "[refs/heads/*]" 
+    # pipelinesascode.tekton.dev/task: "git-clone"
+    # How many runs we want to keep.
+    # pipelinesascode.tekton.dev/max-keep-runs: "7"
+    # pipelinesascode.tekton.dev/on-cel-expression: | event == "push" && target_branch == "[refs/heads/*]" && "staging/*".pathChanged()
+       # event_title.startsWith("Merge pull request") "docs/*.md".pathChanged() "components/?*/base/**".pathChanged()
+       # event == "pull_request" && target_branch == "refs/heads/*" && ("**/staging/**".pathChanged())
+       # event == "pull_request" && target_branch == "main" && source_branch == "refs/heads/*"  && ("staging/?*/base/**".pathChanged() || "staging/*".pathChanged() || "/staging/**".pathChanged())
+       # event == "push" && target_branch == "main" && source_branch == "refs/heads/*"  && ("staging/?*/base/**".pathChanged() || "staging/*".pathChanged() || "*/staging/**".pathChanged())
+       # ( target_branch == "refs/heads/*" && event == "push" && ("components/**".pathChanged()) )
+    # pipelinesascode.tekton.dev/on-cel-expression: |
+      # ( event == "push" && source_branch == "refs/heads/*" ) && "components/?*/base/**".pathChanged()
+spec:
+  params:
+    - name: repo_url
+      value: "{{ repo_url }}"
+    - name: revision
+      value: "{{ revision }}"
+  pipelineSpec:
+    params:
+      - name: repo_url
+      - name: revision
+    tasks:
+      - name: noop-task
+        taskSpec:
+          steps:
+            - name: noop-task
+              image: ubuntu
+              command: ["/bin/echo", "{{ trigger_comment }}"]
